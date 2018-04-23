@@ -42,8 +42,14 @@ def handle_message(event):
     if key == 'profile':
         message = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message)
+    elif key =='涵涵':
+        message2 = TextMessage(text="I Love U, Shelby.")
+        line_bot_api.reply_message(event.reply_token, message)
+    elif key =='紀念日':
+        message3 = TextMessage(text="我們紀念日是1/19唷")
+        line_bot_api.reply_message(event.reply_token, message)
     else:
-        message2 = TextMessage(text="Hello world")
+        message4 = TextMessage(text="Hello world")
         line_bot_api.reply_message(event.reply_token, message2)
 
 
