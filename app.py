@@ -79,52 +79,30 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif text == 'bye':
-        if isinstance(event.source, SourceGroup):
-            line_bot_api.reply_message(
-                event.reply_token, TextMessage(text='Leaving group'))
-            line_bot_api.leave_group(event.source.group_id)
-        elif isinstance(event.source, SourceRoom):
-            line_bot_api.reply_message(
-                event.reply_token, TextMessage(text='Leaving group'))
-            line_bot_api.leave_room(event.source.room_id)
-        else:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextMessage(text="You can't leave me"))
-    elif key == 'carousel':
+    elif text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='Github', title='Github', actions=[
+            CarouselColumn(text='hoge1', title='fuga1', actions=[
                 URITemplateAction(
-                    label='Go to my github', uri='https://github.com/blazers08'),
+                    label='Go to line.me', uri='https://line.me'),
                 PostbackTemplateAction(label='ping', data='ping')
-            ]),
-            CarouselColumn(text='About me', title='About me', actions=[
-                PostbackTemplateAction(
-                    label='Denny', data='This is my English name',
-                    text='This is my English name'),
-                PostbackTemplateAction(
-                    label='Show my Chinese name', data='陳禹丞',
-                    text='陳禹丞'),
             ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
                 PostbackTemplateAction(
                     label='ping with text', data='ping',
                     text='ping'),
-                URITemplateAction(
-                    label='THis is my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
+                MessageTemplateAction(label='Translate Rice', text='米')
             ]),
         ])
         template_message = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif key == 'image_carousel':
+    elif text == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='http://via.placeholder.com/350x150',
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerTemplateAction(label='datetime',
                                                                     data='datetime_postback',
                                                                     mode='datetime')),
-            ImageCarouselColumn(image_url='http://via.placeholder.com/1024x1024',
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerTemplateAction(label='date',
                                                                     data='date_postback',
                                                                     mode='date'))
