@@ -66,29 +66,16 @@ def handle_message(event):
             title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
-                PostbackTemplateAction(label='Denny', data='This is my English name'),
+                PostbackTemplateAction(
+                    label='Denny', data='This is my English name',
+                    text='This is my English name'),
                 PostbackTemplateAction(
                     label='Show my Chinese name', data='陳禹丞',
                     text='陳禹丞'),
-                MessageTemplateAction(label='Translate NCCU', text='國立政治大學')
+                PostbackTemplateAction(
+                    label='Where do I study at?', data='NCCU MIS',
+                    text='NCCU MIS'),
             ])
-            # title='Hi I\'m Denny', text='Hello Guys, press the button to know more about me', actions=[
-            #     URITemplateAction(
-            #         label='Go to my github', uri='https://github.com/blazers08'),
-            #     URITemplateAction(
-            #         label='This is my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
-            #     PostbackTemplateAction(label='Denny', data='This is my English name'),
-            #     PostbackTemplateAction(
-            #         label='Show my Chinese name', data='陳禹丞',
-            #         text='陳禹丞'),
-            #     PostbackTemplateAction(
-            #         label='What is my major?', data='MIS',
-            #         text='MIS'),
-            #     PostbackTemplateAction(
-            #         label='Where do I study at?', data='NCCU',
-            #         text='NCCU'),
-            #     MessageTemplateAction(label='Translate NCCU', text='國立政治大學')
-            # ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
@@ -112,11 +99,20 @@ def handle_message(event):
                     label='Go to my github', uri='https://github.com/blazers08'),
                 PostbackTemplateAction(label='ping', data='ping')
             ]),
+            CarouselColumn(text='About me', title='About me', actions=[
+                PostbackTemplateAction(
+                    label='Denny', data='This is my English name',
+                    text='This is my English name'),
+                PostbackTemplateAction(
+                    label='Show my Chinese name', data='陳禹丞',
+                    text='陳禹丞'),
+            ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
                 PostbackTemplateAction(
                     label='ping with text', data='ping',
                     text='ping'),
-                MessageTemplateAction(label='Translate Rice', text='米')
+                URITemplateAction(
+                    label='THis is my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
             ]),
         ])
         template_message = TemplateSendMessage(
@@ -124,11 +120,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiD4_iQgdHaAhWGjJQKHaaUAuEQjRx6BAgAEAU&url=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2FLINE_(%25E5%2585%25AC%25E5%258F%25B8)&psig=AOvVaw3weDrPdoHyID9jCSaim7kx&ust=1524593927482578',
+            ImageCarouselColumn(image_url='http://via.placeholder.com/350x150',
                                 action=DatetimePickerTemplateAction(label='datetime',
                                                                     data='datetime_postback',
                                                                     mode='datetime')),
-            ImageCarouselColumn(image_url='https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj8uNDOgdHaAhVCGpQKHcZhA20QjRx6BAgAEAU&url=%2Furl%3Fsa%3Di%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dimages%26cd%3D%26ved%3D%26url%3Dhttps%253A%252F%252Fwww.google.org%252F%26psig%3DAOvVaw36tBHQHa_lKJNnBYATVLaz%26ust%3D1524593923674766&psig=AOvVaw36tBHQHa_lKJNnBYATVLaz&ust=1524593923674766',
+            ImageCarouselColumn(image_url='http://via.placeholder.com/1024x1024',
                                 action=DatetimePickerTemplateAction(label='date',
                                                                     data='date_postback',
                                                                     mode='date'))
