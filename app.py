@@ -63,21 +63,29 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'buttons':
         buttons_template = ButtonsTemplate(
-            title='My buttons sample', text='Hello, my buttons', actions=[
+            title='Hi I\'m Denny', text='Hello Guys, press the button to know more about me', actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
-                PostbackTemplateAction(label='ping', data='ping'),
+                URITemplateAction(
+                    label='This is my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
+                PostbackTemplateAction(label='Denny', data='This is my English name'),
                 PostbackTemplateAction(
-                    label='ping with text', data='ping',
-                    text='ping'),
-                MessageTemplateAction(label='Translate Rice', text='米')
+                    label='Show my Chinese name', data='陳禹丞',
+                    text='陳禹丞'),
+                PostbackTemplateAction(
+                    label='What is my major?', data='MIS',
+                    text='MIS'),
+                PostbackTemplateAction(
+                    label='Where do I study at?', data='NCCU',
+                    text='NCCU'),
+                MessageTemplateAction(label='Translate NCCU', text='國立政治大學')
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
+            CarouselColumn(text='Github', title='Github', actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
                 PostbackTemplateAction(label='ping', data='ping')
@@ -94,11 +102,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='/Users/Denny/Desktop/line-bot-tutorial-master/CIMG0611.JPG',
+            ImageCarouselColumn(image_url='https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiD4_iQgdHaAhWGjJQKHaaUAuEQjRx6BAgAEAU&url=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2FLINE_(%25E5%2585%25AC%25E5%258F%25B8)&psig=AOvVaw3weDrPdoHyID9jCSaim7kx&ust=1524593927482578',
                                 action=DatetimePickerTemplateAction(label='datetime',
                                                                     data='datetime_postback',
                                                                     mode='datetime')),
-            ImageCarouselColumn(image_url='/Users/Denny/Desktop/line-bot-tutorial-master/CIMG0632.JPG',
+            ImageCarouselColumn(image_url='https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj8uNDOgdHaAhVCGpQKHcZhA20QjRx6BAgAEAU&url=%2Furl%3Fsa%3Di%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dimages%26cd%3D%26ved%3D%26url%3Dhttps%253A%252F%252Fwww.google.org%252F%26psig%3DAOvVaw36tBHQHa_lKJNnBYATVLaz%26ust%3D1524593923674766&psig=AOvVaw36tBHQHa_lKJNnBYATVLaz&ust=1524593923674766',
                                 action=DatetimePickerTemplateAction(label='date',
                                                                     data='date_postback',
                                                                     mode='date'))
@@ -127,7 +135,7 @@ def handle_location_message(event):
 def handle_follow(event):
     line_bot_api.reply_message(
         event.reply_token, TextSendMessage(text='Got follow event'))
-    
+
 @handler.add(BeaconEvent)
 def handle_beacon(event):
     line_bot_api.reply_message(
