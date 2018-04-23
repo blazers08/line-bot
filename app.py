@@ -48,15 +48,16 @@ def callback():
 def handle_message(event):
     key = event.message.text
     if key == 'profile':
-        profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
+        keyname = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
         message1 = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message1)
-        message2 = TextMessage(Texprofile.display_name)
+        message2 = TextMessage(keyname.display_name)
         line_bot_api.reply_message(event.reply_token, message2)
     elif key == 'confirm':
-        confirm_template = ConfirmTemplate(text='Do it?', actions=[
+        confirm_template = ConfirmTemplate(text='Do I have a chance to Intern at Line?', actions=[
             MessageTemplateAction(label='Yes', text='Yes!'),
             MessageTemplateAction(label='No', text='No!'),
+            MessageTemplateAction(label='Considering', text='Let me thinl about this!'),
         ])
         template_message = TemplateSendMessage(
             alt_text='Confirm alt text', template=confirm_template)
@@ -79,7 +80,7 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif text == 'carousel':
+    elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='hoge1', title='fuga1', actions=[
                 URITemplateAction(
@@ -96,7 +97,7 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif text == 'image_carousel':
+    elif key == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerTemplateAction(label='datetime',
