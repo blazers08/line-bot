@@ -40,8 +40,11 @@ def callback():
 def handle_message(event):
     key = event.message.text
     if key == 'profile':
-        message = TextMessage(text="Hello Guys, I'm Denny")
+        message = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message)
+    else:
+        message2 = TextMessage(text="Hello world")
+        line_bot_api.reply_message(event.reply_token, message2)
 
 
 import os
