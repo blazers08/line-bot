@@ -48,8 +48,11 @@ def callback():
 def handle_message(event):
     key = event.message.text
     if key == 'profile':
+        profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
         message1 = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message1)
+        message2 = TextMessage(Texprofile.display_name)
+        line_bot_api.reply_message(event.reply_token, message2)
     elif key == 'confirm':
         confirm_template = ConfirmTemplate(text='Do it?', actions=[
             MessageTemplateAction(label='Yes', text='Yes!'),
@@ -103,9 +106,22 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    else:
+    elif key == 'hello':
         message4 = TextMessage(text="Hello world")
         line_bot_api.reply_message(event.reply_token, message4)
+    else:
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text=event.message.text))
+
+@handler.add(MessageEvent, message=LocationMessage)
+def handle_location_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        LocationSendMessage(
+            title=event.message.title, address=event.message.address,
+            latitude=event.message.latitude, longitude=event.message.longitude
+        )
+    )
 
 
 
