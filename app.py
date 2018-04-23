@@ -39,9 +39,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     key = event.message.text
-    if key == 'profile':
+    if key == 'test':
         if isinstance(event.source, SourceUser):
-            profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
+            profile = line_bot_api.get_profile(Ub1dec77c8763f4e3da7489afffaf7d09)
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(
@@ -52,14 +52,9 @@ def handle_message(event):
                     )
                 ]
             )
-        message1 = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
+    elif key == 'porfile':
+        message1 = TextSendMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message1)
-    elif key =='涵涵':
-        message2 = TextMessage(text="I Love U, Shelby.")
-        line_bot_api.reply_message(event.reply_token, message2)
-    elif key =='紀念日':
-        message3 = TextMessage(text="我們紀念日是1/19唷")
-        line_bot_api.reply_message(event.reply_token, message3)
     else:
         message4 = TextMessage(text="Hello world")
         line_bot_api.reply_message(event.reply_token, message4)
