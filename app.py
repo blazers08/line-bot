@@ -39,12 +39,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextMessage(text="Hello World, this is from code")
-    profile = line_bot_api.get_profile(user_id)
-    print(profile.display_name)
-    print(profile.user_id)
-    print(profile.picture_url)
-    print(profile.status_message)
     line_bot_api.reply_message(event.reply_token, message)
+    line_bot-api.reply_message(event.source.user_id, message)
 
 
 import os
