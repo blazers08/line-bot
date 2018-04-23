@@ -63,26 +63,48 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'buttons':
         buttons_template = ButtonsTemplate(
-            title='Hi I\'m Denny', text='Hello Guys, press the button to know more about me', actions=[
+            title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
-                URITemplateAction(
-                    label='This is my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
                 PostbackTemplateAction(label='Denny', data='This is my English name'),
                 PostbackTemplateAction(
                     label='Show my Chinese name', data='陳禹丞',
                     text='陳禹丞'),
-                PostbackTemplateAction(
-                    label='What is my major?', data='MIS',
-                    text='MIS'),
-                PostbackTemplateAction(
-                    label='Where do I study at?', data='NCCU',
-                    text='NCCU'),
                 MessageTemplateAction(label='Translate NCCU', text='國立政治大學')
             ])
+            # title='Hi I\'m Denny', text='Hello Guys, press the button to know more about me', actions=[
+            #     URITemplateAction(
+            #         label='Go to my github', uri='https://github.com/blazers08'),
+            #     URITemplateAction(
+            #         label='This is my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
+            #     PostbackTemplateAction(label='Denny', data='This is my English name'),
+            #     PostbackTemplateAction(
+            #         label='Show my Chinese name', data='陳禹丞',
+            #         text='陳禹丞'),
+            #     PostbackTemplateAction(
+            #         label='What is my major?', data='MIS',
+            #         text='MIS'),
+            #     PostbackTemplateAction(
+            #         label='Where do I study at?', data='NCCU',
+            #         text='NCCU'),
+            #     MessageTemplateAction(label='Translate NCCU', text='國立政治大學')
+            # ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == 'bye':
+        if isinstance(event.source, SourceGroup):
+            line_bot_api.reply_message(
+                event.reply_token, TextMessage(text='Leaving group'))
+            line_bot_api.leave_group(event.source.group_id)
+        elif isinstance(event.source, SourceRoom):
+            line_bot_api.reply_message(
+                event.reply_token, TextMessage(text='Leaving group'))
+            line_bot_api.leave_room(event.source.room_id)
+        else:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextMessage(text="You can't leave me"))
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='Github', title='Github', actions=[
