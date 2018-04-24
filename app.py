@@ -90,12 +90,12 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Confirm alt text', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif key == '蘋果即時新聞':
-        content = apple_news()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
-        return 0
+    # elif key == '蘋果即時新聞':
+    #     content = apple_news()
+    #     line_bot_api.reply_message(
+    #         event.reply_token,
+    #         TextSendMessage(text=content))
+    #     return 0
     elif key == 'buttons':
         buttons_template = ButtonsTemplate(
             title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
