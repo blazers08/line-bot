@@ -157,13 +157,18 @@ def handle_message(event):
                 thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='Show my Chinese name', data='陳禹丞',
-                        text='陳禹丞'),
-                    
+                        label='實習經驗', ,
+                        text='實習經驗'),
                 ]
             )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0
+    if event.message.text == "實習經驗":
+        content = "我的實習經驗分別有：\n以誠研發以及Mattel, Inc."
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
         return 0
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
