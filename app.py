@@ -48,11 +48,10 @@ def callback():
 def handle_message(event):
     key = event.message.text
     if key == 'profile':
-        keyname = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
         message1 = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message1)
-        message2 = TextMessage(keyname.display_name)
-        line_bot_api.reply_message(event.reply_token, message2)
+        profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
+        line_bot_api.reply_message(event.reply_token, TextMessage(profile.display_name))
     elif key == 'confirm':
         confirm_template = ConfirmTemplate(text='Do I have a chance to Intern at Line?', actions=[
             MessageTemplateAction(label='Yes', text='Yes!'),
@@ -82,9 +81,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
+            CarouselColumn(text='RESUME', title='RESUME', actions=[
                 URITemplateAction(
-                    label='Go to line.me', uri='https://line.me'),
+                    label='CHinese RESUME', uri='https://line.me'),
                 PostbackTemplateAction(label='ping', data='ping')
             ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
@@ -99,7 +98,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://imgur.com/gallery/MK2jiAt',
+            ImageCarouselColumn(image_url='https://via.placeholder.com/350x150',
                                 action=DatetimePickerTemplateAction(label='datetime',
                                                                     data='datetime_postback',
                                                                     mode='datetime')),
