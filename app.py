@@ -98,11 +98,14 @@ def handle_message(event):
                     text='陳禹丞'),
                 PostbackTemplateAction(
                     label='Where do I study at?', data='NCCU MIS',
-                    line_bot_api.reply_message(event.reply_token, TextMessage(text="I study at NCCUMIS"))),
+                    text = "I study at NCCU MIS"),
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif key == 'news':
+        message1 = TextMessage(text="news")
+        line_bot_api.reply_message(event.reply_token, message1)
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='RESUME', title='RESUME', actions=[
