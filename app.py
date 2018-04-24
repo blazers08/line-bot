@@ -79,7 +79,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='想了解什麼',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
+                thumbnail_image_url='https://i.imgur.com/lghTGd7.png',
                 actions=[
                     MessageTemplateAction(
                         label='關於我',
@@ -108,20 +108,12 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='基本資料',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/vkqbLnz.png',
+                thumbnail_image_url='https://i.imgur.com/PiuLljM.png',
                 actions=[
                     MessageTemplateAction(
                         label='簡介',
                         text='簡介'
                     ),
-                    MessageTemplateAction(
-                        label='科技新報',
-                        text='科技新報'
-                    ),
-                    MessageTemplateAction(
-                        label='PanX泛科技',
-                        text='PanX泛科技'
-                    )
                 ]
             )
         )
@@ -152,9 +144,9 @@ def handle_message(event):
         buttons_template = TemplateSendMessage(
             alt_text='實習經驗 template',
             template=ButtonsTemplate(
-                title='你在看我簡介喔',
+                title='你在看我實習經驗喔',
                 text='看起來',
-                thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
+                thumbnail_image_url='https://i.imgur.com/PiuLljM.png',
                 actions=[
                     MessageTemplateAction(
                         label='實習公司', 
@@ -166,7 +158,7 @@ def handle_message(event):
         return 0
 
     if event.message.text == "實習公司":
-        content = "Mattel, Inc."
+        content = "Mattel, Inc./n主要在做新技術的研究"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
