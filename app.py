@@ -186,6 +186,11 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+
+    if event.message.text == "拜拜":
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text=event.message.text))
+        return 0
     # if event.message.text == '蘋果新聞':
     #     content = apple_news()
     #     line_bot_api.reply_message(
