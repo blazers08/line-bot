@@ -116,26 +116,76 @@ def handle_message(event):
         return 0
 
     if event.message.text == "研究方向":
-        content = "我的研究方向為金融科技專利的趨勢與對於公司的營運績效。"
+        content = "我目前的研究方向為銀行葉公司之金融科技專利的趨勢與對於公司的營運績效是否有影響，利用爬蟲，例如：Scrapy、Selenium等技術收集專利資料，利用收集的資料來做後續的研究。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0 
 
     if event.message.text == "對於Line實習的期望":
-        content = "如果有機會獲取這份職缺"
+        content = "如果有機會獲取這份職缺，自己對於學習任何新事物都不排斥，所以很期待在這實習階段學到以往沒接觸過的，或是更深入專研之前所碰過的東西。\n例如這次的習題，聊天機器人就是之前沒有碰過，因此能從無到有寫出來，覺得非常有成就感。能在自己每天都會使用到的軟體的公司上班，我覺得是件非常棒的事情，徹底了解公司的文化與核心價值。\n希望在這一年或是更久的時間，能夠滿載而歸。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
 
     if event.message.text == "技能與課程":
-        content = "如果有機會獲取這份職缺"
+        buttons_template = TemplateSendMessage(
+            alt_text='技能與課程 template',
+            template=ButtonsTemplate(
+                title='技能與課程',
+                text='請選擇',
+                thumbnail_image_url='https://i.imgur.com/PiuLljM.png',
+                actions=[
+                    MessageTemplateAction(
+                        label='Python',
+                        text='Python'
+                    ),
+                    MessageTemplateAction(
+                        label='DataBase',
+                        text='DataBase'
+                    ),
+                    MessageTemplateAction(
+                        label='Front-end',
+                        text='Front-end'
+                    ),
+                    MessageTemplateAction(
+                        label='Others',
+                        text='Others'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0
+
+    if event.message.text == "Python":
+        content = "1.Flask\n2.Django\n3.Scarpy\n4.Selenium\n5.Automation\n6.NCCU MOOCS - data analysis"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
 
+    if event.message.text == "DataBase":
+        content = "1.MySQL\n2.MonggoDB\n3.FireBase"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
+    if event.message.text == "Front-end":
+        content = "1.HTML\n2.CSS\n3.JavaScript\n4.ReactJS\n5.Redux"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
+    if event.message.text == "Others":
+        content = "1.Git\n2.AWS\n3.Docker\n4.Java\n5.Java-Spring\n6.TOEIC-755"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
     # if event.message.text == '蘋果新聞':
     #     content = apple_news()
     #     line_bot_api.reply_message(
