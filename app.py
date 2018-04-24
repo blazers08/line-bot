@@ -213,6 +213,10 @@ def handle_message(event):
                     label='中文履歷',
                     uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'
                 ),
+                URITemplateAction(
+                    label='英文履歷',
+                    uri='https://drive.google.com/drive/folders/1cy0d6ldhjnfvjIrqBaMHymgE9qXtyeQr?usp=sharing'
+                ),
                 MessageTemplateAction(
                     label='實習經驗',
                     text='實習經驗'
