@@ -2,4 +2,4 @@
 
 這是我的QRCode
 
-![](https://imgur.com/a/3DU5gG3)
+![avatar](/Users/Denny/Desktop/line-bot-tutorial-master/QRCode.png)
