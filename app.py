@@ -63,7 +63,7 @@ def apple_news():
             link = head + data['href']
         content += '{}\n\n'.format(link)
     return content
-    
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
@@ -84,6 +84,12 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Confirm alt text', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif key == "蘋果即時新聞":
+        content = apple_news()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
     elif key == 'buttons':
         buttons_template = ButtonsTemplate(
             title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
