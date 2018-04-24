@@ -132,33 +132,17 @@ def handle_message(event):
                         text='自我介紹'
                     ),
                     MessageTemplateAction(
-                        label='即時廢文',
-                        text='即時廢文'
+                        label='對於實習的期望',
+                        text='對於實習的期望'
                     )
                 ]
             )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "實習經驗":
-        buttons_template = TemplateSendMessage(
-            alt_text='實習經驗 template',
-            template=ButtonsTemplate(
-                title='你在看我實習經驗喔',
-                text='看起來',
-                thumbnail_image_url='https://i.imgur.com/PiuLljM.png',
-                actions=[
-                    MessageTemplateAction(
-                        label='實習公司', 
-                        text='實習公司'),
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-        return 0
 
-    if event.message.text == "實習公司":
-        content = "以誠研發：\n主要是利用python做資料分析及處理，並將不分資料從MongoDB放置MySQL中。\n，Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。\n"
+    if event.message.text == "實習經驗":
+        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。\n"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
@@ -171,16 +155,23 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0 
 
+    if event.message.text == "對於實習的期望":
+        content = "如果有機會獲取這份職缺"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
-            title='請選擇想知道些什麼',
-            text='關於我',
+            title='關於我',
+            text='請選擇想知道些什麼',
             thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='了解我',
-                    text='了解我'
+                    label='了解陳禹丞',
+                    text='了解陳禹丞'
                 ),
                 URITemplateAction(
                     label='中文履歷',
