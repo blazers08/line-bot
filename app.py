@@ -92,13 +92,13 @@ def handle_message(event):
                     label='Go to my github', uri='https://github.com/blazers08'),
                 PostbackTemplateAction(
                     label='Denny', data='This is my English name',
-                    line_bot_api.reply_message(event.reply_token, TextMessage(text="This is my English name"))),
+                    text='This is my English name'),
                 PostbackTemplateAction(
                     label='Show my Chinese name', data='陳禹丞',
-                    line_bot_api.reply_message(event.reply_token, TextMessage(text="陳禹丞"))),
+                    text='陳禹丞'),
                 PostbackTemplateAction(
                     label='Where do I study at?', data='NCCU MIS',
-                    line_bot_api.reply_message(event.reply_token, TextMessage(text="I study at NCCU MIS"))),
+                    greet = TextMessage(text="I study at NCCU MIS")),
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
