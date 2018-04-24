@@ -73,7 +73,7 @@ def apple_news():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-    if event.message.text == "了解我":
+    if event.message.text == "了解陳禹丞":
         buttons_template = TemplateSendMessage(
             alt_text='開始玩 template',
             template=ButtonsTemplate(
@@ -142,7 +142,7 @@ def handle_message(event):
         return 0
 
     if event.message.text == "實習經驗":
-        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。\n"
+        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n 2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
