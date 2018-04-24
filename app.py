@@ -92,9 +92,10 @@ def handle_message(event):
             alt_text='Confirm alt text', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
         return 0
-    elif key == 'buttons':
-        buttons_template = ButtonsTemplate(
-            title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
+    elif key == 'buttons': 
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template(
+                title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
                 PostbackTemplateAction(
@@ -105,10 +106,10 @@ def handle_message(event):
                     text='陳禹丞'),
                 PostbackTemplateAction(
                     label='Where do I study at?', data='NCCU MIS',
-                    text = "I study at NCCU MIS"),
-            ])
-        template_message = TemplateSendMessage(
-            alt_text='Buttons alt text', template=buttons_template)
+                    text = "I study at NCCU MIS")
+                ]
+            )
+        )
         line_bot_api.reply_message(event.reply_token, template_message)
         return 0
     elif key == 'news':
