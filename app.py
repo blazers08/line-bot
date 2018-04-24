@@ -273,7 +273,7 @@ def handle_sticker_message(event):
         event.reply_token,
         StickerSendMessage(
             package_id='1',
-            sticker_id=''+str(i), for i in range(1, 17, 1),
+            sticker_id='1',
         )
     )
 
