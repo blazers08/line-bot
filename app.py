@@ -131,7 +131,7 @@ def handle_message(event):
                 # MessageTemplateAction(label='Translate Rice', text='米')
             ]),
         ])
-        template_message = TemplateSendMessage(
+        buttons_template = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
         return 0
