@@ -93,18 +93,18 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
         return 0
     elif key == 'buttons': 
-        template_message = TemplateSendMessage(
+        buttons_template = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template(
                 title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
-                PostbackTemplateAction(
-                    label='Denny', data='This is my English name',
-                    text='This is my English name'),
-                PostbackTemplateAction(
+                # MessageTemplateAction(
+                #     label='Denny', data='This is my English name',
+                #     text='This is my English name'),
+                MessageTemplateAction(
                     label='Show my Chinese name', data='陳禹丞',
                     text='陳禹丞'),
-                PostbackTemplateAction(
+                MessageTemplateAction(
                     label='Where do I study at?', data='NCCU MIS',
                     text = "I study at NCCU MIS")
                 ]
