@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 
 import requests
 import re
+import random
 from bs4 import BeautifulSoup
 
 from linebot import (
@@ -91,6 +92,10 @@ def handle_message(event):
                         text='研究方向'
                     ),
                     MessageTemplateAction(
+                        label='技能與課程',
+                        text='技能與課程'
+                    ),
+                    MessageTemplateAction(
                         label='對於Line實習的期望',
                         text='對於Line實習的期望'
                     )
@@ -122,6 +127,13 @@ def handle_message(event):
         return 0 
 
     if event.message.text == "對於Line實習的期望":
+        content = "如果有機會獲取這份職缺"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
+    if event.message.text == "技能與課程":
         content = "如果有機會獲取這份職缺"
         line_bot_api.reply_message(
             event.reply_token,
@@ -251,42 +263,15 @@ def handle_message(event):
     # else:
     #     line_bot_api.reply_message(
     #         event.reply_token, TextSendMessage(text=event.message.text))
-    #     return 0
-    # buttons_template = TemplateSendMessage(
-    #     alt_text='目錄 template',
-    #     template=ButtonsTemplate(
-    #         title='選擇服務',
-    #         text='請選擇',
-    #         thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
-    #         actions=[
-    #             MessageTemplateAction(
-    #                 label='buttons',
-    #                 text='buttons'
-    #             ),
-    #             URITemplateAction(
-    #                 label='影片介紹 阿肥bot',
-    #                 uri='https://youtu.be/1IxtWgWxtlE'
-    #             ),
-    #             URITemplateAction(
-    #                 label='如何建立自己的 Line Bot',
-    #                 uri='https://github.com/twtrubiks/line-bot-tutorial'
-    #             ),
-    #             URITemplateAction(
-    #                 label='聯絡作者',
-    #                 uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
-    #             )
-    #         ]
-    #     )
-    # )
-    # line_bot_api.reply_message(event.reply_token, buttons_template)
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
+    number = random.randint(1,17)
     line_bot_api.reply_message(
         event.reply_token,
         StickerSendMessage(
             package_id='1',
-            sticker_id='1'
+            sticker_id=''+number+''
         )
     )
 
