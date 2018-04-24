@@ -51,7 +51,7 @@ def handle_message(event):
         message1 = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
         line_bot_api.reply_message(event.reply_token, message1)
         profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
-        line_bot_api.reply_message(event.reply_token, TextMessage(profile.display_name))
+        line_bot_api.reply_message(event.reply_token, TextMessage(text='Display name: ' + profile.display_name))
     elif key == 'confirm':
         confirm_template = ConfirmTemplate(text='Do I have a chance to Intern at Line?', actions=[
             MessageTemplateAction(label='Yes', text='Yes!'),
@@ -83,7 +83,7 @@ def handle_message(event):
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='RESUME', title='RESUME', actions=[
                 URITemplateAction(
-                    label='CHinese RESUME', uri='https://line.me'),
+                    label='Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
                 PostbackTemplateAction(label='ping', data='ping')
             ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
@@ -126,13 +126,14 @@ def handle_message(event):
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        StickerSendMessage(
+    if isinstance(event.message, ImageMessage):
+        line_bot_api.reply_message(
+            event.reply_token,
+            StickerSendMessage(
             package_id='1',
             sticker_id='1'
+        )
     )
-)
 
 import os
 if __name__ == "__main__":
