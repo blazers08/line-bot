@@ -111,7 +111,7 @@ def handle_message(event):
         content = TextMessage(text="this is news")
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=content))
+            content)
         return 0
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
