@@ -83,7 +83,7 @@ def handle_message(event):
                 actions=[
                     MessageTemplateAction(
                         label='關於我',
-                        text='新聞'
+                        text='關於我'
                     ),
                     MessageTemplateAction(
                         label='電影',
@@ -148,6 +148,23 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
+    if event.message.text == "實習經驗":
+        buttons_template = TemplateSendMessage(
+            alt_text='實習經驗 template',
+            template=ButtonsTemplate(
+                title='你在看我簡介喔',
+                text='看起來',
+                thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='Show my Chinese name', data='陳禹丞',
+                        text='陳禹丞'),
+                    
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
@@ -160,12 +177,12 @@ def handle_message(event):
                     text='了解我'
                 ),
                 URITemplateAction(
-                    label='影片介紹 阿肥bot',
-                    uri='https://youtu.be/1IxtWgWxtlE'
+                    label='中文履歷',
+                    uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'
                 ),
-                URITemplateAction(
-                    label='如何建立自己的 Line Bot',
-                    uri='https://github.com/twtrubiks/line-bot-tutorial'
+                MessageTemplateAction(
+                    label='實習經驗',
+                    text='實習經驗'
                 ),
                 URITemplateAction(
                     label='Go To My Github',
