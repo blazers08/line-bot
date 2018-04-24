@@ -266,12 +266,12 @@ def handle_message(event):
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
-    int(number) = random.randint(1,17)
+    # int(number) = random.randint(1,17)
     line_bot_api.reply_message(
         event.reply_token,
         StickerSendMessage(
             package_id='1',
-            sticker_id=''+number+
+            sticker_id='1'
         )
     )
 
