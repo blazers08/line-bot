@@ -103,20 +103,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
 
-    if event.message.text == "經歷":
-        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。"
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
-        return 0
-
-    if event.message.text == "實習經驗":
-        content = "這裡是實習經驗"
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
-        return 0    
-
     if event.message.text == "自我介紹":
         content = "大家好我的名字叫陳禹丞，目前就讀政大資管所。"
         line_bot_api.reply_message(
@@ -129,7 +115,14 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
-        return 0 
+        return 0   
+
+    if event.message.text == "實習經驗":
+        content = "這裡是實習經驗"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
 
     if event.message.text == "對於實習的期望":
         content = "如果有機會獲取這份職缺"
@@ -137,6 +130,16 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+
+    if event.message.text == "經歷":
+        content = "1.以誠研發\n 2.Mattel, Inc."
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+    
+
+    
 
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
