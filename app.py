@@ -98,7 +98,7 @@ def handle_message(event):
                     text='陳禹丞'),
                 PostbackTemplateAction(
                     label='Where do I study at?', data='NCCU MIS',
-                    greet = TextMessage(text="I study at NCCU MIS")),
+                    line_bot_api.reply_message(event.reply_token, TextMessage(text="I study at NCCUMIS"))),
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
