@@ -75,35 +75,6 @@ def handle_message(event):
     print("event.message.text:", event.message.text)
     if event.message.text == "了解陳禹丞":
         buttons_template = TemplateSendMessage(
-            alt_text='開始玩 template',
-            template=ButtonsTemplate(
-                title='想了解什麼',
-                text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/lghTGd7.png',
-                actions=[
-                    MessageTemplateAction(
-                        label='關於我',
-                        text='關於我'
-                    ),
-                    MessageTemplateAction(
-                        label='電影',
-                        text='電影'
-                    ),
-                    MessageTemplateAction(
-                        label='看廢文',
-                        text='看廢文'
-                    ),
-                    MessageTemplateAction(
-                        label='正妹',
-                        text='正妹'
-                    )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-        return 0
-    if event.message.text == "關於我":
-        buttons_template = TemplateSendMessage(
             alt_text='關於我 template',
             template=ButtonsTemplate(
                 title='基本資料',
@@ -119,6 +90,10 @@ def handle_message(event):
                         text='研究方向'
                     ),
                     MessageTemplateAction(
+                        label='實習經驗',
+                        text='實習經驗'
+                    )
+                    MessageTemplateAction(
                         label='對於實習的期望',
                         text='對於實習的期望'
                     )
@@ -128,8 +103,15 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
 
-    if event.message.text == "實習經驗":
+    if event.message.text == "經歷":
         content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
+    if event.message.text == "實習經驗":
+        content = "這裡是實習經驗"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
@@ -172,8 +154,8 @@ def handle_message(event):
                     uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'
                 ),
                 MessageTemplateAction(
-                    label='實習經驗',
-                    text='實習經驗'
+                    label='經歷',
+                    text='經歷'
                 ),
                 URITemplateAction(
                     label='Go To My Github',
