@@ -102,21 +102,21 @@ def handle_message(event):
         return 0
 
     if event.message.text == "實習經驗":
-        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。"
+        content = "1. 以誠研發：\n主要是利用python寫了三支資料分析及處理的程式，並且將部分資料從MongoDB轉儲存於MySQL中，以利後續的分析。\n2. Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux, Python Automation等技術，並跟主管報告是否適用於新產品的開發上。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0    
 
     if event.message.text == "自我介紹":
-        content = "大家好我的名字叫陳禹丞，目前就讀政大資管所。"
+        content = "大家好我的名字叫陳禹丞，目前就讀政大資管所。自己對於學習新的技術或知識都抱持開放的態度，不侷限自己的學習。樂於團隊合作。喜歡到處瀏覽文章或是報導，吸收新知。會督促自己去了解新的技術或是學習既有的技術，讓自己的能力往上提升。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
 
     if event.message.text == "研究方向":
-        content = "我目前的研究方向為銀行葉公司之金融科技專利的趨勢與對於公司的營運績效是否有影響，利用爬蟲，例如：Scrapy、Selenium等技術收集專利資料，利用收集的資料來做後續的研究。"
+        content = "我目前的研究方向為銀行業公司之金融科技專利的趨勢與對於公司的營運績效是否有影響，利用爬蟲，例如：Scrapy、Selenium等技術收集專利資料，利用收集的資料來做後續的研究。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
@@ -160,28 +160,28 @@ def handle_message(event):
         return 0
 
     if event.message.text == "Python":
-        content = "1.Flask\n2.Django\n3.Scarpy\n4.Selenium\n5.Automation\n6.NCCU MOOCS - data analysis"
+        content = "1. Flask\n2. Django\n3. Scarpy\n4. Selenium\n5. Automation\n6. NCCU MOOCS - data analysis"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
 
     if event.message.text == "DataBase":
-        content = "1.MySQL\n2.MonggoDB\n3.FireBase"
+        content = "1. MySQL\n2. MongoDB\n3. FireBase"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
 
     if event.message.text == "Front-end":
-        content = "1.HTML\n2.CSS\n3.JavaScript\n4.ReactJS\n5.Redux"
+        content = "1. HTML\n2. CSS\n3. JavaScript\n4. ReactJS\n5. Redux"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
 
     if event.message.text == "Others":
-        content = "1.Git\n2.AWS\n3.Docker\n4.Java\n5.Java-Spring\n6.TOEIC-755"
+        content = "1. Git\n2. AWS\n3. Docker\n4. Java\n5. Java-Spring\n6. TOEIC-755"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
