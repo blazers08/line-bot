@@ -73,16 +73,16 @@ def apple_news():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-    if event.message.text == "開始玩":
+    if event.message.text == "了解我":
         buttons_template = TemplateSendMessage(
             alt_text='開始玩 template',
             template=ButtonsTemplate(
-                title='選擇服務',
+                title='想了解什麼',
                 text='請選擇',
                 thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='新聞',
+                        label='關於我',
                         text='新聞'
                     ),
                     MessageTemplateAction(
@@ -102,17 +102,17 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "新聞":
+    if event.message.text == "關於我":
         buttons_template = TemplateSendMessage(
-            alt_text='新聞 template',
+            alt_text='關於我 template',
             template=ButtonsTemplate(
-                title='新聞類型',
+                title='基本資料',
                 text='請選擇',
                 thumbnail_image_url='https://i.imgur.com/vkqbLnz.png',
                 actions=[
                     MessageTemplateAction(
-                        label='蘋果即時新聞',
-                        text='蘋果即時新聞'
+                        label='簡介',
+                        text='簡介'
                     ),
                     MessageTemplateAction(
                         label='科技新報',
@@ -127,17 +127,37 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-
+    if event.message.text == "簡介":
+        buttons_template = TemplateSendMessage(
+            alt_text='簡介 template',
+            template=ButtonsTemplate(
+                title='你在看我簡介喔',
+                text='看起來',
+                thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='近期熱門廢文',
+                        text='近期熱門廢文'
+                    ),
+                    MessageTemplateAction(
+                        label='即時廢文',
+                        text='即時廢文'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
-            title='選擇服務',
-            text='請選擇',
+            title='請選擇想知道些什麼',
+            text='關於我',
             thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='開始玩',
-                    text='開始玩'
+                    label='了解我',
+                    text='了解我'
                 ),
                 URITemplateAction(
                     label='影片介紹 阿肥bot',
@@ -148,8 +168,8 @@ def handle_message(event):
                     uri='https://github.com/twtrubiks/line-bot-tutorial'
                 ),
                 URITemplateAction(
-                    label='聯絡作者',
-                    uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
+                    label='Go To My Github',
+                    uri='https://github.com/blazers08'
                 )
             ]
         )
