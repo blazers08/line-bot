@@ -141,7 +141,7 @@ def handle_message(event):
         content = apple_news()
         line_bot_api.reply_message(
             event.reply_token,
-            TextMessage(text=content))
+            TextSendMessage(text=content))
         return 0
 
     buttons_template = TemplateSendMessage(
