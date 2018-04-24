@@ -81,6 +81,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message1)
     #     profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
     #     line_bot_api.reply_message(event.reply_token, TextMessage(text='Display name: ' + profile.display_name))
+        return 0
     elif key == 'confirm':
         confirm_template = ConfirmTemplate(text='Do I have a chance to Intern at Line?', actions=[
             MessageTemplateAction(label='Yes', text='Yes!'),
@@ -89,6 +90,7 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Confirm alt text', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+        return 0
     elif key == 'buttons':
         buttons_template = ButtonsTemplate(
             title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
@@ -107,6 +109,7 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+        return 0
     elif key == 'news':
         content = apple_news()
         line_bot_api.reply_message(
@@ -130,6 +133,7 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+        return 0
     elif key == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://via.placeholder.com/350x150',
@@ -144,19 +148,23 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+        return 0
     elif key == 'hello':
         message4 = TextMessage(text="Hello world")
         line_bot_api.reply_message(event.reply_token, message4)
+        return 0
     elif key == 'sticker' or '貼圖':
         line_bot_api.reply_message(
         event.reply_token,
         StickerSendMessage(
             package_id='1',
             sticker_id='100'
-    ))
+        ))
+        return 0
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
+        return 0
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
@@ -184,6 +192,7 @@ def handle_message(event):
         )
     )
     line_bot_api.reply_message(event.reply_token, buttons_template)
+
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
     line_bot_api.reply_message(
