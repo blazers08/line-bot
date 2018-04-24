@@ -118,7 +118,7 @@ def handle_message(event):
             TextMessage(text=content))
         return 0
     elif key == 'carousel':
-        carousel_template = CarouselTemplate(columns=[
+        buttons_template = TemplateSendMessage(columns=[
             CarouselColumn(text='RESUME', title='RESUME', actions=[
                 URITemplateAction(
                     label='Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
@@ -132,7 +132,7 @@ def handle_message(event):
             ]),
         ])
         buttons_template = TemplateSendMessage(
-            alt_text='Carousel alt text', template=carousel_template)
+            alt_text='Carousel alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
         return 0
     elif key == 'image_carousel':
