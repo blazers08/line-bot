@@ -48,9 +48,6 @@ def callback():
 
     return 'OK'
 
-# line_bot_api.push_message('Ub1dec77c8763f4e3da7489afffaf7d09', TextSendMessage(text="I'll give you some hints to let you know how touse it"))
-# tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
-# line_bot_api.reply_message(event.reply_token, tips)
 @app.route("/callback", methods=['POST'])
 def apple_news():
     target_url = 'http://www.appledaily.com.tw/realtimenews/section/new/'
@@ -140,6 +137,13 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0
 
+    if key == '蘋果新聞':
+        content = apple_news()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextMessage(text=content))
+        return 0
+
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
@@ -162,22 +166,22 @@ def handle_message(event):
                 URITemplateAction(
                     label='Go To My Github',
                     uri='https://github.com/blazers08'
-                )
+                ),
+                MessageTemplateAction(
+                    label='蘋果新聞',
+                    text='蘋果新聞'
+                ),
+
             ]
         )
     )
     line_bot_api.reply_message(event.reply_token, buttons_template)
-    # # tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
-    # # line_bot_api.reply_message(event.reply_token, tips)
-    # # line_bot_api.push_message('Ub1dec77c8763f4e3da7489afffaf7d09', TextSendMessage(text="I'll give you some hints to let you know how touse it"))
-    # print("event.reply_token:", event.reply_token)
-    # print("event.message.text:", event.message.text)
     # key = event.message.text
     # if key == 'profile':
     #     message1 = TextMessage(text="Hello Guys, I'm Denny. I come from Taipei")
     #     line_bot_api.reply_message(event.reply_token, message1)
-    # #     profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
-    # #     line_bot_api.reply_message(event.reply_token, TextMessage(text='Display name: ' + profile.display_name))
+    #     profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
+    #     line_bot_api.reply_message(event.reply_token, TextMessage(text='Display name: ' + profile.display_name))
     #     return 0
     # elif key == 'confirm':
     #     confirm_template = ConfirmTemplate(text='Do I have a chance to Intern at Line?', actions=[
