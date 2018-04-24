@@ -118,14 +118,14 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
 
-@handler.add(MessageEvent, message=StickerMessage)
-def handle_sticker_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        StickerSendMessage(
-            1=event.message.package_id,
-            1=event.message.sticker_id)
-    )
+# @handler.add(MessageEvent, message=StickerMessage)
+# def handle_sticker_message(event):
+#     line_bot_api.reply_message(
+#         event.reply_token,
+#         StickerSendMessage(
+#             1=event.message.package_id,
+#             1=event.message.sticker_id)
+#     )
 
 import os
 if __name__ == "__main__":
