@@ -46,6 +46,7 @@ def callback():
 # line_bot_api.push_message('Ub1dec77c8763f4e3da7489afffaf7d09', TextSendMessage(text="I'll give you some hints to let you know how touse it"))
 # tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
 # line_bot_api.reply_message(event.reply_token, tips)
+@app.route("/callback", methods=['POST'])
 def apple_news():
     target_url = 'http://www.appledaily.com.tw/realtimenews/section/new/'
     head = 'http://www.appledaily.com.tw'
@@ -63,7 +64,7 @@ def apple_news():
             link = head + data['href']
         content += '{}\n\n'.format(link)
     return content
-    
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
@@ -91,17 +92,23 @@ def handle_message(event):
                     label='Go to my github', uri='https://github.com/blazers08'),
                 PostbackTemplateAction(
                     label='Denny', data='This is my English name',
-                    text='This is my English name'),
+                    line_bot_api.reply_message(event.reply_token, TextMessage(text="This is my English name"))),
                 PostbackTemplateAction(
                     label='Show my Chinese name', data='陳禹丞',
-                    text='陳禹丞'),
+                    line_bot_api.reply_message(event.reply_token, TextMessage(text="陳禹丞"))),
                 PostbackTemplateAction(
                     label='Where do I study at?', data='NCCU MIS',
-                    text='NCCU MIS'),
+                    line_bot_api.reply_message(event.reply_token, TextMessage(text="I study at NCCU MIS"))),
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif key == 'news':
+        content = apple_news()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='RESUME', title='RESUME', actions=[
