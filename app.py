@@ -18,6 +18,12 @@ from linebot.models import (
     UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent
 )
 
+import requests
+import re
+import random
+import configparser
+from bs4 import BeautifulSoup
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -155,11 +161,12 @@ def handle_message(event):
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
+    number = random.randint(1,17)
     line_bot_api.reply_message(
         event.reply_token,
         StickerSendMessage(
             package_id='1',
-            sticker_id='1'
+            sticker_id=number
         )
     )
 
