@@ -111,25 +111,12 @@ def handle_message(event):
                 thumbnail_image_url='https://i.imgur.com/PiuLljM.png',
                 actions=[
                     MessageTemplateAction(
-                        label='簡介',
-                        text='簡介'
-                    ),
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-        return 0
-    if event.message.text == "簡介":
-        buttons_template = TemplateSendMessage(
-            alt_text='簡介 template',
-            template=ButtonsTemplate(
-                title='你在看我簡介喔',
-                text='看起來',
-                thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
-                actions=[
-                    MessageTemplateAction(
                         label='自我介紹',
                         text='自我介紹'
+                    ),
+                    MessageTemplateAction(
+                        label='研究方向',
+                        text='研究方向'
                     ),
                     MessageTemplateAction(
                         label='對於實習的期望',
@@ -142,7 +129,7 @@ def handle_message(event):
         return 0
 
     if event.message.text == "實習經驗":
-        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n 2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。"
+        content = "1.以誠研發：\n主要是利用python做寫了三支資料分析的程式及處理，並將部分資料從MongoDB放置MySQL中。\n2.Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
@@ -150,6 +137,13 @@ def handle_message(event):
 
     if event.message.text == "自我介紹":
         content = "大家好我的名字叫陳禹丞，目前就讀政大資管所。"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+
+    if event.message.text == "研究方向":
+        content = "我的研究方向為金融科技專利的趨勢與對於公司的營運績效。"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
