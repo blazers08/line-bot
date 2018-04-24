@@ -91,8 +91,8 @@ def handle_message(event):
                         text='研究方向'
                     ),
                     MessageTemplateAction(
-                        label='對於實習的期望',
-                        text='對於實習的期望'
+                        label='對於Line實習的期望',
+                        text='對於Line實習的期望'
                     )
                 ]
             )
@@ -133,7 +133,7 @@ def handle_message(event):
         template=ButtonsTemplate(
             title='關於我',
             text='請選擇想知道些什麼',
-            thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
+            thumbnail_image_url='https://i.imgur.com/LCJ66TB.png',
             actions=[
                 MessageTemplateAction(
                     label='了解陳禹丞',
