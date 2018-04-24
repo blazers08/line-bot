@@ -79,7 +79,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='想了解什麼',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
+                thumbnail_image_url='https://imgur.com/a/glHe3IP',
                 actions=[
                     MessageTemplateAction(
                         label='關於我',
@@ -157,19 +157,20 @@ def handle_message(event):
                 thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='實習經驗', ,
-                        text='實習經驗'),
+                        label='實習公司', ,
+                        text='實習公司'),
                 ]
             )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "實習經驗":
+    if event.message.text == "實習公司":
         content = "我的實習經驗分別有：\n以誠研發以及Mattel, Inc."
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
+
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
