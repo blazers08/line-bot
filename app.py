@@ -94,7 +94,7 @@ def handle_message(event):
         return 0
     elif key == 'buttons': 
         buttons_template = TemplateSendMessage(
-            alt_text='Buttons alt text', template=buttons_template(
+            alt_text='Buttons template', template=ButtonsTemplate(
                 title="Hi I'm Denny", text="Hello Guys, press the button to know more about me", actions=[
                 URITemplateAction(
                     label='Go to my github', uri='https://github.com/blazers08'),
@@ -175,8 +175,8 @@ def handle_message(event):
             thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='開始玩',
-                    text='開始玩'
+                    label='buttons',
+                    text='buttons'
                 ),
                 URITemplateAction(
                     label='影片介紹 阿肥bot',
