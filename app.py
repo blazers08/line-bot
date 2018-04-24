@@ -121,7 +121,7 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0 
 
-    if event.message.text == "對於實習的期望":
+    if event.message.text == "對於Line實習的期望":
         content = "如果有機會獲取這份職缺"
         line_bot_api.reply_message(
             event.reply_token,
