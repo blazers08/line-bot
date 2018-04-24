@@ -1,5 +1,9 @@
 from flask import Flask, request, abort
 
+import requests
+import re
+from bs4 import BeautifulSoup
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -104,8 +108,12 @@ def handle_message(event):
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'news':
-        message1 = TextMessage(text="news")
-        line_bot_api.reply_message(event.reply_token, message1)
+        message1 = TextMessage(text="this is news")
+        content = ine_bot_api.reply_message(event.reply_token, message1)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
     elif key == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='RESUME', title='RESUME', actions=[
