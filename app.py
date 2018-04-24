@@ -128,8 +128,8 @@ def handle_message(event):
                 thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='近期熱門廢文',
-                        text='近期熱門廢文'
+                        label='自我介紹',
+                        text='自我介紹'
                     ),
                     MessageTemplateAction(
                         label='即時廢文',
@@ -158,11 +158,18 @@ def handle_message(event):
         return 0
 
     if event.message.text == "實習公司":
-        content = "Mattel, Inc./n主要在做新技術的研究"
+        content = "以誠研發：\n主要是利用python做資料分析及處理，並將不分資料從MongoDB放置MySQL中。\n，Mattel, Inc.:\n主要在做新技術的研究，例如FireBase with Redux等技術。\n"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0    
+
+    if event.message.text == "自我介紹":
+        content = "大家好我的名字叫陳禹丞，目前就讀政大資管所。"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0 
 
     buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
