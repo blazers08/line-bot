@@ -90,7 +90,7 @@ def handle_message(event):
         template_message = TemplateSendMessage(
             alt_text='Confirm alt text', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif key == "蘋果即時新聞":
+    elif key == '蘋果即時新聞':
         content = apple_news()
         line_bot_api.reply_message(
             event.reply_token,
