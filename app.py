@@ -84,8 +84,8 @@ def handle_message(event):
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='hoge1', title='fuga1', actions=[
                 URITemplateAction(
-                    label='Go to line.me', uri='https://line.me'),
-                PostbackTemplateAction(label='ping', data='ping')
+                    label='Go to my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
+                PostbackTemplateAction(label='Python', data='I understand Python')
             ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
                 PostbackTemplateAction(
@@ -99,7 +99,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'image_carousel':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+            ImageCarouselColumn(image_url='https://imgur.com/gallery/sEu18ZQ',
                                 action=DatetimePickerTemplateAction(label='datetime',
                                                                     data='datetime_postback',
                                                                     mode='datetime')),
