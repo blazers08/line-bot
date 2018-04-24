@@ -108,8 +108,7 @@ def handle_message(event):
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     elif key == 'news':
-        message1 = TextMessage(text="this is news")
-        content = ine_bot_api.reply_message(event.reply_token, message1)
+        content = TextMessage(text="this is news")
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
