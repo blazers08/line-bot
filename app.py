@@ -84,8 +84,8 @@ def handle_message(event):
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='hoge1', title='fuga1', actions=[
                 URITemplateAction(
-                    label='Go to my Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
-                PostbackTemplateAction(label='Python', data='I understand Python')
+                    label='Go to line.me', uri='https://line.me'),
+                PostbackTemplateAction(label='ping', data='ping')
             ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
                 PostbackTemplateAction(
@@ -114,6 +114,13 @@ def handle_message(event):
     elif key == 'hello':
         message4 = TextMessage(text="Hello world")
         line_bot_api.reply_message(event.reply_token, message4)
+    elif key == 'sticker' or '貼圖':
+        line_bot_api.reply_message(
+        event.reply_token,
+        StickerSendMessage(
+            package_id='1',
+            sticker_id='100'
+    ))
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
@@ -127,7 +134,7 @@ def handle_sticker_message(event):
             sticker_id='1'
     )
 )
-    
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
