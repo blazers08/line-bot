@@ -43,20 +43,22 @@ def callback():
 
     return 'OK'
 
+line_bot_api.push_message(to, TextSendMessage(text="I'll give you some hints to let you know how touse it"))
+tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
+line_bot_api.reply_message(event.reply_token, tips)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     key = event.message.text
     if key == 'profile':
-        message1 = TextMessage(text="Hello Guys, I'm Denny. I'm from Taipei")
+        message1 = TextMessage(text="Hello Guys, I'm Denny. I come from Taipei")
         line_bot_api.reply_message(event.reply_token, message1)
-        profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
-        line_bot_api.reply_message(event.reply_token, TextMessage(text='Display name: ' + profile.display_name))
+    #     profile = line_bot_api.get_profile('Ub1dec77c8763f4e3da7489afffaf7d09')
+    #     line_bot_api.reply_message(event.reply_token, TextMessage(text='Display name: ' + profile.display_name))
     elif key == 'confirm':
         confirm_template = ConfirmTemplate(text='Do I have a chance to Intern at Line?', actions=[
             MessageTemplateAction(label='Yes', text='Yes!'),
             MessageTemplateAction(label='No', text='No!'),
-            # MessageTemplateAction(label='Considering', text='Let me thinl about this!'),
         ])
         template_message = TemplateSendMessage(
             alt_text='Confirm alt text', template=confirm_template)
@@ -84,13 +86,13 @@ def handle_message(event):
             CarouselColumn(text='RESUME', title='RESUME', actions=[
                 URITemplateAction(
                     label='Chinese RESUME', uri='https://www.cakeresume.com/s--h3xa5Aw4l5GsUbluBUehjg--/denny-chen'),
-                PostbackTemplateAction(label='ping', data='ping')
+                # PostbackTemplateAction(label='ping', data='ping')
             ]),
-            CarouselColumn(text='hoge2', title='fuga2', actions=[
+            CarouselColumn(text='About me', title='Skills', actions=[
                 PostbackTemplateAction(
                     label='ping with text', data='ping',
-                    text='ping'),
-                MessageTemplateAction(label='Translate Rice', text='米')
+                    text='Python'),
+                # MessageTemplateAction(label='Translate Rice', text='米')
             ]),
         ])
         template_message = TemplateSendMessage(
