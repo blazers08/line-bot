@@ -166,7 +166,7 @@ def handle_sticker_message(event):
         event.reply_token,
         StickerSendMessage(
             package_id='1',
-            sticker_id=number
+            sticker_id=''+number+
         )
     )
 
