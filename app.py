@@ -126,7 +126,7 @@ def handle_message(event):
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
-    if isinstance(event.message, ImageMessage):
+    if event.message.type !== 'text':
         line_bot_api.reply_message(
             event.reply_token,
             StickerSendMessage(
