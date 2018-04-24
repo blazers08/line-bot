@@ -74,7 +74,8 @@ def handle_message(event):
     # tips = TextMessage(text="You can type some keywords: profile, confirm, buttons, carousel, image_carousel, hello, sticker or 貼圖")
     # line_bot_api.reply_message(event.reply_token, tips)
     # line_bot_api.push_message('Ub1dec77c8763f4e3da7489afffaf7d09', TextSendMessage(text="I'll give you some hints to let you know how touse it"))
-
+    print("event.reply_token:", event.reply_token)
+    print("event.message.text:", event.message.text)
     key = event.message.text
     if key == 'profile':
         message1 = TextMessage(text="Hello Guys, I'm Denny. I come from Taipei")
